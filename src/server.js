@@ -1,4 +1,5 @@
 import path from 'path';
+import request from 'request';
 import express from 'express';
 import helmet from 'helmet';
 import pretty from 'pretty';
@@ -36,7 +37,12 @@ app.use(
 // Routes
 app.get('/', indexPage);
 
+app.get('/odis/laddstationer/:file?', getProxyHandler(
+  'https://raw.githubusercontent.com',
+  '/swedev/odis/master/laddstationer/'
+));
 
+// Start
 app.listen(PORT, () => {
   console.log(`swedev.org running on port ${PORT}!`);
   if (debug) {
@@ -60,6 +66,22 @@ function indexPage(req, res) {
 /**
  * Helpers
  */
+
+function getProxyHandler(host, basePath) {
+  return function(req, res) {
+    const fileName = req.params.file || 'index.html';
+    const filePath = path.join(basePath, fileName);
+    const uri = `${host}${filePath}`;
+    res.type(fileName);
+    return request(uri, function(error, response, body) {
+      if (error) {
+        console.log('REQUEST ERROR', error);
+        res.send('An error occurred.');
+      }
+      return res.send(body);
+    });
+  };
+}
 
 function toHtml(obj) {
   return pretty(

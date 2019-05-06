@@ -1,11 +1,11 @@
 {
   "name": "swedev.org",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Public website at www.swedev.org",
   "main": "src/index.js",
   "scripts": {
     "build": "babel src -d dist",
-    "postbuild": "tar -czf swedev.org.1.0.0.tar.gz ./dist ./public ./nginx ./package.json ./package-lock.json",
+    "postbuild": "tar -czf swedev.org.1.1.0.tar.gz ./dist ./public ./nginx ./package.json ./package-lock.json",
     "serve": "NODE_ENV=production node dist/server.js",
     "start": "NODE_ENV=development nodemon --exec babel-node src/server.js",
     "lint": "eslint src/**/*.js"
@@ -32,7 +32,8 @@
     "classnames": "^2.2.6",
     "express": "^4.16.4",
     "helmet": "^3.17.0",
-    "pretty": "^2.0.0"
+    "pretty": "^2.0.0",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",
