@@ -59,10 +59,11 @@ export function Splash(props) {
 
         <div className="swedev-description">
           <p>
-            Swedev is a community for Swedish soft&shy;ware devel&shy;opers and IT enthu&shy;siasts.
+            Swedev is a community for Swedish software devel&shy;opers, UI des&shy;igners, system
+            archi&shy;tects, project mana&shy;gers, IT secur&shy;ity, DevOps and other IT prof&shy;ess&shy;ionals.
             Our goal is for swedev to be a natural point of entry for commun&shy;icating with the
-            Swedish soft&shy;ware commun&shy;ity. We also believe in prom&shy;oting the use of open data
-            and open source code, speci&shy;fically but not exclusively within Swedish government.
+            Swedish software commun&shy;ity. We also believe in prom&shy;oting the use of open data
+            and open source code, speci&shy;fically but not exclu&shy;sively within Swedish government.
           </p>
           <p>
             So come join the conver&shy;sation on <a href="https://reddit.com/r/swedev">Reddit</a>, contri&shy;bute
