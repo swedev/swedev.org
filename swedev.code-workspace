@@ -1,16 +1,36 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"files.exclude": {
-			"**/.git": true,
-			"**/.DS_Store": true,
-			"**/dist": true,
-			"**/node_modules": true,
-			"*.gz": true
-		}
-	}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "search.exclude": {
+      "static": true,
+			"package-lock.json": true,
+    },
+    "files.exclude" : {
+      ".vercel": true,
+      ".next": true,
+      "pgdata": true,
+      "node_modules": true,
+      "**/.babel-cache": true,
+      "**/.cache": true,
+      "**/*.tar": true,
+      "**/*.gz": true,
+    },
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+    },
+    "files.associations": {
+      "Dockerfile-prod": "dockerfile",
+    },
+    "window.title": "SWEDEV",
+    "editor.insertSpaces": true,        
+    "editor.tabSize": 2,
+    "search.useIgnoreFiles": false,
+  }
 }
