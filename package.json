@@ -1,13 +1,30 @@
 {
   "name": "swedev.org",
+  "description": "Public website at www.swedev.org",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swedev/swedev.org.git"
+  },
+  "keywords": [
+    "swedish",
+    "software",
+    "developers",
+    "open source",
+    "open data"
+  ],
+  "author": "Martin Söderholm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swedev/swedev.org/issues"
+  },
+  "homepage": "https://www.swedev.org",
   "dependencies": {
     "bootstrap": "^5.1.1",
     "next": "11.1.2",
