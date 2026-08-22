@@ -17,5 +17,5 @@ there to add a project, change a status or a link.
 
 ## Deploy
 
-Static export (`next build` → `out/`) rsynced to the `saga` server on every
-push to `main`. See [`deploy/README.md`](deploy/README.md).
+Static export (`next build` → `out/`) rsynced to the `saga` server when a
+`v*` tag is pushed. See [`deploy/README.md`](deploy/README.md).

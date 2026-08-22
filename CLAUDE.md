@@ -6,7 +6,8 @@ Static public site for the swedev organisation. One page, Swedish copy.
 
 - Branch + PR flow — never commit directly to `main`. PRs are squash-merged.
 - CI (`Integrate`) must be green: `npm run lint && npm run typecheck && npm run build`.
-- Every push to `main` deploys (rsync to saga) — merging is releasing.
+- Deploys happen on `v*` tags only (`git tag v0.2.0 && git push origin v0.2.0`);
+  merging to `main` does not deploy.
 
 ## Stack
 
