@@ -1,9 +1,16 @@
 # Deploy
 
 swedev.org is a static Next.js export served by nginx on the `saga` server
-(Hetzner, `insector` hcloud context). GitHub Actions builds on every push to
-`main` and rsyncs `out/` to `/var/www/swedev.org` — see
+(Hetzner, `insector` hcloud context). GitHub Actions builds and rsyncs `out/` to
+`/var/www/swedev.org` when a `v*` tag is pushed — see
 [`.github/workflows/deploy.yaml`](../.github/workflows/deploy.yaml).
+
+```bash
+git tag v0.2.0 && git push origin v0.2.0
+```
+
+Re-deploy or roll back by running the workflow manually from the Actions tab
+with the tag selected (an untagged run is refused by the tag guard).
 
 ## One-time server setup
 
