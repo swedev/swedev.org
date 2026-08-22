@@ -1,9 +1,4 @@
-export type Status =
-  | 'I drift'
-  | 'Aktiv utveckling'
-  | 'Proof-of-concept'
-  | 'Design'
-  | 'Idéfas'
+export type Status = 'Alfa' | 'Publicerad' | 'Tidigt' | 'Proof-of-concept' | 'Idéfas'
 
 export interface Project {
   slug: string
@@ -11,8 +6,7 @@ export interface Project {
   tagline: string
   description: string
   status: Status
-  kind: 'app' | 'lib'
-  dependsOn: string[]
+  kind: 'app' | 'lib' | 'data'
   links: { label: string; href: string }[]
 }
 
@@ -22,46 +16,43 @@ export const projects: Project[] = [
     name: 'OpenVera',
     tagline: 'Bokföring för svenska småföretag',
     description:
-      'Banktransaktioner via PSD2 och CSV, kvitton och fakturor, matchning, leverantörsregister och SIE4-export. Webb-UI först, agent som komplement.',
-    status: 'I drift',
+      'Banktransaktioner via Enable Banking (PSD2) eller CSV, dokumentlagring med matchning mot transaktioner, leverantörsregister, rapporter och SIE4-export. Flask, Postgres och React. Tidig alfa som körs skarpt för ett bolag.',
+    status: 'Alfa',
     kind: 'app',
-    dependsOn: ['klartex', 'svensk'],
-    links: [{ label: 'openvera.se', href: 'https://openvera.se' }],
+    links: [],
   },
   {
     slug: 'styrla',
     name: 'Styrla',
-    tagline: 'Plattform för svenska föreningar',
+    tagline: 'Plattform för svenska föreningar och organisationer',
     description:
-      'Ärendelogg, medlemsregister med GDPR-rutin, kallelser och protokoll — självbeskrivande moduler som kombineras efter föreningens behov. Byggs först för en koloniförening.',
-    status: 'Aktiv utveckling',
+      'Ärendelogg, medlemsregister med inbjudningar och roller, sök och maskin-API med scopes. Byggs i fas 0 för en koloniförening och för ärendehantering i ett fåmansbolag; kallelser, protokoll och dokument är nästa steg.',
+    status: 'Alfa',
     kind: 'app',
-    dependsOn: ['klartex', 'openvera', 'timla', 'svensk', 'swedev-ui'],
-    links: [{ label: 'app.styrla.se', href: 'https://app.styrla.se' }],
+    links: [],
   },
   {
     slug: 'timla',
     name: 'Timla',
-    tagline: 'Tid, bokning och schemaläggning',
+    tagline: 'Schemaläggning och bokning',
     description:
-      'En composable tidsmotor: arbetsschema, tidsbokning, resursbokning, tidsrapportering. Lagret under verktyg som Calendly, Planday och Doodle.',
-    status: 'Aktiv utveckling',
+      'Arbetsschema med personal, pass, tillgänglighet, bemanningsbehov och publicering, plus resurser, tjänster och publik bokningssida. MVP för schemaläggning under utveckling, med pilotkunder.',
+    status: 'Alfa',
     kind: 'app',
-    dependsOn: ['klartex', 'openvera', 'svensk'],
     links: [],
   },
   {
     slug: 'klartex',
     name: 'Klartex',
-    tagline: 'PDF-dokument via LaTeX',
+    tagline: 'PDF-dokument från JSON via LaTeX',
     description:
-      'Strukturerad data in, professionella dokument ut. Kärnan är ett Python-paket med CLI och HTTP-server; klartex.se blir en WYSIWYG-webbapp ovanpå den.',
-    status: 'I drift',
-    kind: 'app',
-    dependsOn: [],
+      'Python-bibliotek och CLI: strukturerad data in, typograferad PDF ut. Blockmotor med ett tjugotal blocktyper och färdiga recept för protokoll, faktura, kvitto och ekonomiska rapporter. klartex.se erbjuder ett HTTP-API ovanpå biblioteket.',
+    status: 'Publicerad',
+    kind: 'lib',
     links: [
+      { label: 'klartex.se', href: 'https://klartex.se' },
+      { label: 'pypi: klartex', href: 'https://pypi.org/project/klartex/' },
       { label: 'swedev/klartex', href: 'https://github.com/swedev/klartex' },
-      { label: 'swedev/klartex.se', href: 'https://github.com/swedev/klartex.se' },
     ],
   },
   {
@@ -69,24 +60,19 @@ export const projects: Project[] = [
     name: 'Valsedel',
     tagline: 'Personliga valsedlar enligt Valmyndighetens spec',
     description:
-      'Välj val, sök parti, rangordna kandidater och få en PDF i exakt rätt format — A6, färgkodad per valtyp, 333 partier och 104 partilogotyper.',
+      'Välj val, sök parti, rangordna kandidater och få en A6-valsedel som PDF i rätt format och färg. Data för 333 partier, 21 regioner och 290 kommuner. Next.js, Postgres och XeLaTeX.',
     status: 'Proof-of-concept',
     kind: 'app',
-    dependsOn: ['klartex'],
-    links: [
-      { label: 'valsedel.se', href: 'https://valsedel.se' },
-      { label: 'swedev/valsedel', href: 'https://github.com/swedev/valsedel' },
-    ],
+    links: [{ label: 'swedev/valsedel', href: 'https://github.com/swedev/valsedel' }],
   },
   {
     slug: 'debira',
     name: 'Debira',
     tagline: 'Kundregister och fakturering',
     description:
-      'Offert till betald faktura, engångs och återkommande: avisering med OCR, påminnelser, dröjsmålsränta och betalningsmatchning. Överlämnar fordringar till OpenVera.',
+      'Idé: offert till betald faktura, engångs och återkommande — avisering med OCR, påminnelser och betalningsmatchning. Steget före bokföringen.',
     status: 'Idéfas',
     kind: 'app',
-    dependsOn: ['klartex', 'svensk', 'openvera'],
     links: [],
   },
   {
@@ -94,10 +80,9 @@ export const projects: Project[] = [
     name: 'Bovard',
     tagline: 'Verksamhetssystem för små hyresvärdar',
     description:
-      'Objekt, hyresgäster, kontrakt, hyresjustering, felanmälan och underhåll — med hyreslagens regler inbyggda. Aviserar via Debira.',
+      'Idé: objekt, hyresgäster, kontrakt, hyresjustering, felanmälan och underhåll för den som förvaltar några få till några tiotal objekt.',
     status: 'Idéfas',
     kind: 'app',
-    dependsOn: ['debira', 'klartex', 'svensk', 'swedev-ui'],
     links: [],
   },
   {
@@ -105,32 +90,9 @@ export const projects: Project[] = [
     name: 'Fullinsyn',
     tagline: 'Verksamhetsinsikt för småföretag',
     description:
-      'Samlade vyer över ekonomi, kunder, tid och projekt — läser från systemen du redan använder. Ingen egen datainmatning.',
+      'Idé: samlade vyer över ekonomi, kunder, tid och projekt, lästa från de system verksamheten redan använder.',
     status: 'Idéfas',
     kind: 'app',
-    dependsOn: ['openvera', 'timla', 'debira', 'bovard', 'klartex', 'svensk'],
-    links: [],
-  },
-  {
-    slug: 'svensk',
-    name: 'svensk',
-    tagline: 'Svenska integrationer som bibliotek',
-    description:
-      'Swish, BankID, BankGiro, SIE4, SMS, organisations- och personnummer, röda dagar. Aktivt underhållet, säkert by default, agentvänligt.',
-    status: 'Idéfas',
-    kind: 'lib',
-    dependsOn: [],
-    links: [{ label: 'swedev/svensk', href: 'https://github.com/swedev/svensk' }],
-  },
-  {
-    slug: 'parla',
-    name: 'parla',
-    tagline: 'Tjänst-till-tjänst-kopplingar',
-    description:
-      'Pairing, tokens, scopes och rotation mellan apparna. Hemligheten går server till server och passerar aldrig en människa — samtycket är ett klick.',
-    status: 'Design',
-    kind: 'lib',
-    dependsOn: [],
     links: [],
   },
   {
@@ -138,16 +100,43 @@ export const projects: Project[] = [
     name: '@swedev/ui',
     tagline: 'Delat komponentbibliotek',
     description:
-      'Radix Themes med semantiska wrappers, Lucide-ikoner och Tailwind 4. Samma gränssnitt oavsett om modulerna kommer från Styrla, OpenVera eller Timla.',
-    status: 'Aktiv utveckling',
+      'Ett tjugotal React-komponenter ovanpå Radix Themes med semantiska props, Lucide-ikoner och Storybook. Samma gränssnitt i alla appar.',
+    status: 'Publicerad',
     kind: 'lib',
-    dependsOn: [],
-    links: [{ label: 'swedev/ui', href: 'https://github.com/swedev/ui' }],
+    links: [
+      { label: 'npm: @swedev/ui', href: 'https://www.npmjs.com/package/@swedev/ui' },
+      { label: 'swedev/ui', href: 'https://github.com/swedev/ui' },
+    ],
+  },
+  {
+    slug: 'svensk',
+    name: 'svensk',
+    tagline: 'Svenska integrationer som npm-paket',
+    description:
+      'Monorepo under @svensk/ utan runtime-beroenden. Först ut: helgdagar (röda dagar, aftnar, vardagar). Swish, BankID, BankGiro, SIE och SMS är planerade.',
+    status: 'Tidigt',
+    kind: 'lib',
+    links: [{ label: 'swedev/svensk', href: 'https://github.com/swedev/svensk' }],
+  },
+  {
+    slug: 'parla',
+    name: 'parla',
+    tagline: 'Tjänst-till-tjänst-kopplingar',
+    description:
+      'Python-paket för pairing, scopade tokens och rotation mellan apparna, med provider- och consumer-halva och adaptrar för Flask och FastAPI. Första integrationen är på gång.',
+    status: 'Tidigt',
+    kind: 'lib',
+    links: [],
+  },
+  {
+    slug: 'partidata',
+    name: 'Partidata',
+    tagline: 'Öppen data om Sveriges politiska partier',
+    description:
+      'JSON-filer med registrerade partibeteckningar från val.se, partideltagande per val och valtyp, region- och kommunkoder från SCB, samt ett utkast till kandidatlistor.',
+    status: 'Tidigt',
+    kind: 'data',
+    links: [{ label: 'swedev/partidata', href: 'https://github.com/swedev/partidata' }],
   },
 ]
 
-export const bySlug = Object.fromEntries(projects.map((p) => [p.slug, p])) as Record<string, Project>
-
-export function usedBy(slug: string): Project[] {
-  return projects.filter((p) => p.dependsOn.includes(slug))
-}

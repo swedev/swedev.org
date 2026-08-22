@@ -12,6 +12,7 @@ const community = [
 export default function Home() {
   const apps = projects.filter((p) => p.kind === 'app')
   const libs = projects.filter((p) => p.kind === 'lib')
+  const data = projects.filter((p) => p.kind === 'data')
 
   return (
     <>
@@ -33,9 +34,9 @@ export default function Home() {
             Öppen källkod för svenska verksamheter.
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
-            swedev bygger verktyg som föreningar och småföretag faktiskt behöver — bokföring,
-            föreningsdrift, schemaläggning, dokument — och de bibliotek som knyter ihop dem.
-            Svenskt regelverk inbyggt, webb-UI först, AI-agent som komplement.
+            swedev bygger verktyg för föreningar och småföretag — bokföring, föreningsdrift,
+            schemaläggning, dokument — och de bibliotek som knyter ihop dem. Svenska regler
+            och integrationer inbyggda, webb-UI först.
           </p>
           <p className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm">
             <a href="#projekt" className="text-blue underline underline-offset-4">se projekten ↓</a>
@@ -62,6 +63,16 @@ export default function Home() {
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {libs.map((p) => (
+              <ProjectCard key={p.slug} project={p} />
+            ))}
+          </div>
+
+          <div className="mb-8 mt-16 flex items-baseline justify-between">
+            <h2 className="font-display text-2xl font-bold md:text-3xl">Öppna data</h2>
+            <p className="font-mono text-xs text-ink-soft">{data.length} st</p>
+          </div>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {data.map((p) => (
               <ProjectCard key={p.slug} project={p} />
             ))}
           </div>

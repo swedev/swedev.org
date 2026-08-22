@@ -17,8 +17,8 @@ Static public site for the swedev organisation. One page, Swedish copy.
   `border-line`, `text-blue`) — no raw hex in components.
 - Fonts via `next/font/google` (Bricolage Grotesque display, IBM Plex Sans
   body, IBM Plex Mono labels) — downloaded at build time, self-hosted in `out/`.
-- Content: `src/data/projects.ts` is the single source for projects, statuses,
-  dependencies and links. Statuses mirror `~/repos/projects/README.md`; update both.
+- Content: `src/data/projects.ts` is the single source for projects, statuses
+  and links. Verify facts against the actual repos, not planning docs.
 - The logo is an inline `currentColor` SVG (`src/components/Logo.tsx`).
 
 ## Deploy

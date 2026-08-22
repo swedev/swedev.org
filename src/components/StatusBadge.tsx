@@ -1,10 +1,10 @@
 import type { Status } from '@/data/projects'
 
 const tone: Record<Status, string> = {
-  'I drift': 'bg-blue text-white',
-  'Aktiv utveckling': 'bg-blue-wash text-blue-deep',
+  Publicerad: 'bg-blue text-white',
+  Alfa: 'bg-blue-wash text-blue-deep',
   'Proof-of-concept': 'bg-blue-wash text-blue-deep',
-  Design: 'border border-line text-ink-soft',
+  Tidigt: 'border border-line text-ink-soft',
   Idéfas: 'border border-line text-ink-soft',
 }
 

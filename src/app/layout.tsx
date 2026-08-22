@@ -24,7 +24,7 @@ const mono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: 'swedev — öppen källkod för svenska verksamheter',
   description:
-    'swedev bygger öppna, svenskanpassade verktyg för föreningar och småföretag: bokföring, föreningsdrift, schemaläggning, dokument och de bibliotek som knyter ihop dem.',
+    'swedev bygger verktyg för svenska föreningar och småföretag: bokföring, föreningsdrift, schemaläggning, dokument och de bibliotek som knyter ihop dem.',
   metadataBase: new URL('https://www.swedev.org'),
   openGraph: {
     title: 'swedev',
