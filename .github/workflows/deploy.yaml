@@ -54,5 +54,9 @@ jobs:
             out/ "$USER@$HOST:$TARGET/"
 
       - name: Smoke test
+        env:
+          HOST: ${{ secrets.DEPLOY_HOST }}
+          USER: ${{ secrets.DEPLOY_USER }}
         run: |
-          curl -fsS https://www.swedev.org/ | grep -q 'swedev'
+          ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes "$USER@$HOST" \
+            'grep -q swedev /var/www/swedev.org/index.html'
