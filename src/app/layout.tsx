@@ -1,23 +1,24 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import { Bricolage_Grotesque, IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google'
+import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
-const display = Bricolage_Grotesque({
+const display = Instrument_Serif({
   subsets: ['latin'],
-  weight: ['500', '700'],
+  weight: '400',
+  style: ['normal', 'italic'],
   variable: '--font-display',
 })
 
-const sans = IBM_Plex_Sans({
+const sans = Inter_Tight({
   subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-sans',
 })
 
-const mono = IBM_Plex_Mono({
+const mono = JetBrains_Mono({
   subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['400', '600'],
   variable: '--font-mono',
 })
 
