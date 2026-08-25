@@ -58,7 +58,6 @@ export default function Home() {
 
       <main className="mx-auto max-w-7xl px-5 md:px-7">
         <section className="hero py-20 md:py-28">
-          <p className="eyebrow">svensk mjukvara · öppen källkod</p>
           <h1 className="max-w-5xl font-display text-5xl font-normal leading-[0.98] tracking-tight md:text-7xl lg:text-8xl">
             Öppen källkod för<br /> <em>svenska verksamheter.</em>
           </h1>
@@ -77,7 +76,6 @@ export default function Home() {
 
         <section id="projekt" className="projects-section scroll-mt-20 border-t border-line py-16">
           <div className="projects-intro">
-            <p className="eyebrow">{projects.length} projekt</p>
             <h2>Verktygen vi bygger</h2>
             <p>
               Från färdiga bibliotek till tidiga produktspår. Varje kort visar vad projektet
@@ -89,8 +87,6 @@ export default function Home() {
               sammanställd {developmentSnapshot.compiledAt}
             </p>
           </div>
-
-          <ActivityMap />
 
           <ProjectGroup
             title="Applikationer"
@@ -110,6 +106,8 @@ export default function Home() {
             projects={data}
             tone="data"
           />
+
+          <ActivityMap />
         </section>
 
         <section id="community" className="scroll-mt-20 border-t border-line py-16">

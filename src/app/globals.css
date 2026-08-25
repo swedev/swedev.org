@@ -47,15 +47,6 @@ body {
   color: #c9b7ff;
 }
 
-.eyebrow {
-  margin: 0 0 1.25rem;
-  color: var(--color-meta);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
 .projects-intro {
   max-width: 42rem;
 }
@@ -102,10 +93,6 @@ body {
 
 .activity-section__header {
   max-width: 46rem;
-}
-
-.activity-section__header .eyebrow {
-  margin-bottom: 0.75rem;
 }
 
 .activity-section__header h2 {

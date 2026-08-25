@@ -16,7 +16,6 @@ export default function ActivityMap() {
   return (
     <section id="aktivitet" className="activity-section scroll-mt-20" aria-labelledby="activity-title">
       <div className="activity-section__header">
-        <p className="eyebrow">Vecka för vecka</p>
         <h2 id="activity-title">Aktivitetskarta</h2>
         <p>
           Commits per vecka och projekt under {developmentSnapshot.period}. Arbetet går i skov:
