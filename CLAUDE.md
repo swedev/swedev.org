@@ -16,7 +16,7 @@ Static public site for the swedev organisation. One page, Swedish copy.
 - Tailwind 4 with the dark visual system and tokens in `src/app/globals.css`
   (`@theme`). Use the tokens (`text-ink-soft`, `bg-card`,
   `border-line`, `text-blue`) — no raw hex in components.
-- Fonts via `next/font/google` (Instrument Serif display, Inter Tight body,
+- Fonts via `next/font/google` (Barlow Condensed display, Inter Tight body,
   JetBrains Mono labels) — downloaded at build time, self-hosted in `out/`.
 - Content: `src/data/projects.ts` is the single source for projects, statuses,
   links and dated development snapshots. Verify facts against the actual repos,

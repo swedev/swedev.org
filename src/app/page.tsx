@@ -67,7 +67,6 @@ export default function Home() {
             och integrationer inbyggda, webb-UI först.
           </p>
           <p className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm">
-            <a href="#projekt" className="text-blue underline underline-offset-4">se projekten ↓</a>
             <a href="https://github.com/swedev" className="underline decoration-line underline-offset-4 hover:text-blue">
               github.com/swedev ↗
             </a>

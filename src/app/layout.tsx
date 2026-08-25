@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import { Instrument_Serif, Inter_Tight, JetBrains_Mono } from 'next/font/google'
+import { Barlow_Condensed, Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
-const display = Instrument_Serif({
+const display = Barlow_Condensed({
   subsets: ['latin'],
-  weight: '400',
+  weight: ['400', '500'],
   style: ['normal', 'italic'],
   variable: '--font-display',
 })
