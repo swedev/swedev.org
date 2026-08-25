@@ -1,6 +1,7 @@
+import ActivityMap from '@/components/ActivityMap'
 import Logo from '@/components/Logo'
 import ProjectCard from '@/components/ProjectCard'
-import { projects } from '@/data/projects'
+import { developmentSnapshot, projects, type Project } from '@/data/projects'
 
 const community = [
   { label: 'GitHub', detail: 'github.com/swedev', href: 'https://github.com/swedev' },
@@ -9,6 +10,33 @@ const community = [
   { label: 'E-post', detail: 'hello@swedev.org', href: 'mailto:hello@swedev.org' },
 ]
 
+function ProjectGroup({
+  title,
+  description,
+  projects,
+  tone,
+}: {
+  title: string
+  description: string
+  projects: Project[]
+  tone: string
+}) {
+  return (
+    <div className={`project-group project-group--${tone}`}>
+      <div className="project-group__header">
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <span>{projects.length} projekt</span>
+      </div>
+      <div className="project-grid">
+        {projects.map((project) => (
+          <ProjectCard key={project.slug} project={project} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Home() {
   const apps = projects.filter((p) => p.kind === 'app')
   const libs = projects.filter((p) => p.kind === 'lib')
@@ -16,8 +44,8 @@ export default function Home() {
 
   return (
     <>
-      <header className="sticky top-0 z-10 border-b border-line bg-paper/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
+      <header className="sticky top-0 z-10 border-b border-line bg-paper/85 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-7">
           <a href="#" aria-label="swedev" className="block w-24">
             <Logo className="block h-auto w-full" />
           </a>
@@ -28,10 +56,11 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-5">
-        <section className="py-20 md:py-28">
-          <h1 className="max-w-4xl font-display text-4xl font-bold leading-[1.05] tracking-tight md:text-6xl">
-            Öppen källkod för svenska verksamheter.
+      <main className="mx-auto max-w-7xl px-5 md:px-7">
+        <section className="hero py-20 md:py-28">
+          <p className="eyebrow">svensk mjukvara · öppen källkod</p>
+          <h1 className="max-w-5xl font-display text-5xl font-normal leading-[0.98] tracking-tight md:text-7xl lg:text-8xl">
+            Öppen källkod för<br /> <em>svenska verksamheter.</em>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-soft">
             swedev bygger verktyg för föreningar och småföretag — bokföring, föreningsdrift,
@@ -46,40 +75,45 @@ export default function Home() {
           </p>
         </section>
 
-        <section id="projekt" className="scroll-mt-20 border-t border-line py-16">
-          <div className="mb-8 flex items-baseline justify-between">
-            <h2 className="font-display text-2xl font-bold md:text-3xl">Applikationer</h2>
-            <p className="font-mono text-xs text-ink-soft">{apps.length} st</p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {apps.map((p) => (
-              <ProjectCard key={p.slug} project={p} />
-            ))}
-          </div>
-
-          <div className="mb-8 mt-16 flex items-baseline justify-between">
-            <h2 className="font-display text-2xl font-bold md:text-3xl">Bibliotek</h2>
-            <p className="font-mono text-xs text-ink-soft">{libs.length} st</p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {libs.map((p) => (
-              <ProjectCard key={p.slug} project={p} />
-            ))}
+        <section id="projekt" className="projects-section scroll-mt-20 border-t border-line py-16">
+          <div className="projects-intro">
+            <p className="eyebrow">{projects.length} projekt</p>
+            <h2>Verktygen vi bygger</h2>
+            <p>
+              Från färdiga bibliotek till tidiga produktspår. Varje kort visar vad projektet
+              gör, var det befinner sig och vilka delar det består av.
+            </p>
+            <p className="projects-snapshot">
+              <span>Utvecklingsstatistik</span>
+              Git commits {developmentSnapshot.period} · staplar per {developmentSnapshot.granularity} ·{' '}
+              sammanställd {developmentSnapshot.compiledAt}
+            </p>
           </div>
 
-          <div className="mb-8 mt-16 flex items-baseline justify-between">
-            <h2 className="font-display text-2xl font-bold md:text-3xl">Öppna data</h2>
-            <p className="font-mono text-xs text-ink-soft">{data.length} st</p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {data.map((p) => (
-              <ProjectCard key={p.slug} project={p} />
-            ))}
-          </div>
+          <ActivityMap />
+
+          <ProjectGroup
+            title="Applikationer"
+            description="Produkter för det dagliga arbetet i svenska föreningar och småföretag"
+            projects={apps}
+            tone="apps"
+          />
+          <ProjectGroup
+            title="Bibliotek"
+            description="Delade byggblock och integrationer som gör applikationerna enklare att bygga"
+            projects={libs}
+            tone="libraries"
+          />
+          <ProjectGroup
+            title="Öppna data"
+            description="Strukturerade svenska datakällor, fria att använda och bygga vidare på"
+            projects={data}
+            tone="data"
+          />
         </section>
 
         <section id="community" className="scroll-mt-20 border-t border-line py-16">
-          <h2 className="font-display text-2xl font-bold md:text-3xl">Var med</h2>
+          <h2 className="font-display text-4xl font-normal md:text-5xl">Var med</h2>
           <p className="mt-3 max-w-2xl text-ink-soft">
             swedev är en community för svenska utvecklare, designers, arkitekter och andra
             IT-proffs som tror på öppen källkod och öppna data — inte minst inom offentlig sektor.
@@ -92,7 +126,7 @@ export default function Home() {
                   href={c.href}
                   className="block rounded-lg border border-line bg-card p-4 transition-colors hover:border-blue"
                 >
-                  <span className="block font-display font-bold">{c.label}</span>
+                  <span className="block text-lg font-semibold">{c.label}</span>
                   <span className="mt-1 block font-mono text-sm text-ink-soft">{c.detail}</span>
                 </a>
               </li>

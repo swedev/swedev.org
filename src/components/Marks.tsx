@@ -49,7 +49,7 @@ const timla: Brand = {
   accent: '#E69A2E',
   paper: '#FBF1DC',
   mark: (
-    <svg viewBox="8 10 32 32" className="h-7 w-7" fill="none">
+    <svg viewBox="10 8 32 32" className="h-7 w-7" fill="none">
       <g transform="rotate(-90 24 24)">
         <rect x="12" y="14" width="5.5" height="24" rx="2.75" fill="#231D16" />
         <rect x="21.25" y="23" width="5.5" height="15" rx="2.75" fill="#E69A2E" />
